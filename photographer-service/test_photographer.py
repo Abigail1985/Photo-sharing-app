@@ -29,7 +29,7 @@ headers_accept  = {'Accept': 'application/json'}
 @pytest.mark.usefixtures("clearPhotographers")
 @pytest.mark.usefixtures("initDB")
 async def test_post_once():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(app=app, base_url="http://test") as ac: #打开client，以发出异步请求
         response = await ac.post('/photographers',
                                headers=headers_content,
                                  content=json.dumps(data1))
@@ -44,7 +44,7 @@ async def test_post_twice():
         response1 = await ac.post('/photographers',
                                   headers=headers_content,
                                   content=json.dumps(data1))
-        assert response1.status_code == 201
+        assert response1.status_code == 201 #判断是否相等，返回false或true
 
         response2 = await ac.post('/photographers',
                                   headers=headers_content,
@@ -59,7 +59,7 @@ async def test_has_more_false_photographers():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.post('/photographers',
                            headers=headers_content,
-                           content=json.dumps(data1))
+                           content=json.dumps(data1)) #json.dumps()----将Python的字典数据转换成json字符,数据的最外面都添加一层""变为字符串，这也是数据的序列化步骤
         assert response.headers['Location']
         assert response.status_code == 201
 
