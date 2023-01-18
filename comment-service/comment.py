@@ -17,7 +17,7 @@ class D_name:
 
 class Photo_id:
     STR = "Photo id"
-    MAX_LENGTH = 32
+    MAX_LENGTH = 16
     PATH_PARAM = Path(..., title = STR, max_length = MAX_LENGTH)
 
 class Reviewer:
