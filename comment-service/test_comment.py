@@ -35,8 +35,7 @@ async def test_post_once(requests_get):
     async with AsyncClient(app=app, base_url="http://test") as client:
         response = await client.post('/comments', headers=headers_content,
             data=json.dumps(data1),)
-
-    assert response.status_code == 201
+        assert response.status_code == 201
 
 
 @pytest.mark.asyncio # 一个测试异步代码的插件

@@ -150,7 +150,7 @@ async def get_comment_by_reviewer(reviewer: str = Reviewer.PATH_PARAM):
 async def get_comment_by_photographer(display_name: str = D_name.PATH_PARAM):
 
     try:
-        comment = await Comment.find(Comment.display_name == display_name).to_list()   
+        comments = await Comment.find(Comment.display_name == display_name).to_list()   
         if comments is not None:
             pure_comments=list ()
             for comment in comments:

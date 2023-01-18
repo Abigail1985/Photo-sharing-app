@@ -182,7 +182,7 @@ def get_photos(request: Request, display_name: str,  offset: int = 0, limit: int
     return {'items': list_of_photos, 'has_more': has_more}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host = "0.0.0.0", port=80, log_level="info")
+    uvicorn.run(app, host = "0.0.0.0", port=80, log_level="info",reload=True)
     #logger.setLevel(logging.DEBUG)
 else:
     logger.setLevel(gunicorn_logger.level)

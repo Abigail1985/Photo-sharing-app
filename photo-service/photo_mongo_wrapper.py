@@ -38,7 +38,7 @@ def mongo_save_photo(upfile, display_name, photo_id):
     return True
 
 @robustify.retry_mongo
-def mongo_allocate_photo_id(display_name):
+def mongo_allocate_photo_id(display_name):#自动分配照片ID
     try:
         ph_id = PhotoId.objects(display_name=display_name).get()
         photo_id = ph_id.next_photo_id
